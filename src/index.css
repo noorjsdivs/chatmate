@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .registrationInputDiv {
+    @apply border-[1px] border-primary w-2/3 rounded-md relative;
+  }
+  .registrationInput {
+    @apply px-10 py-4 text-lg font-semibold w-full rounded-md placeholder:text-primary placeholder:text-opacity-50;
+  }
+  .registrationInputText {
+    @apply absolute text-sm font-semibold left-8 px-2 -top-3 bg-white;
+  }
+}
