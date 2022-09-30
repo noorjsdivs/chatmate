@@ -6,7 +6,7 @@
 
 @layer components {
   .registrationInputDiv {
-    @apply border-[1px] border-primary w-2/3 rounded-md relative;
+    @apply border-[1px] border-primary w-full mdl:w-2/3 rounded-md relative;
   }
   .registrationInput {
     @apply px-10 py-4 text-lg font-semibold w-full rounded-md placeholder:text-primary placeholder:text-opacity-50;
