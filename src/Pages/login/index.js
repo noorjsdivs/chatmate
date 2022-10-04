@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { registrationImg } from "../../Assets";
-import RegistrationButton from "../../components/button/RegistrationButton";
+import { loginImg } from "../../Assets";
 import { RiEyeCloseFill } from "react-icons/ri";
+import { FcGoogle } from "react-icons/fc";
 import { BsEyeFill } from "react-icons/bs";
+import LoginButton from "../../components/button/LoginButton";
 
-const Registration = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [erremail, setErremail] = useState("");
-  const [fullname, setFullname] = useState("");
-  const [errfullname, setErrfullname] = useState("");
   const [password, setPassword] = useState("");
   const [errpassword, setErrpassword] = useState("");
   const [show, setShow] = useState(false);
@@ -17,10 +16,6 @@ const Registration = () => {
   const handleEmail = (e) => {
     setEmail(e.target.value);
     setErremail("");
-  };
-  const handleFullname = (e) => {
-    setFullname(e.target.value);
-    setErrfullname("");
   };
   const handlePassword = (e) => {
     setPassword(e.target.value);
@@ -36,13 +31,7 @@ const Registration = () => {
         setErremail("Valid email is required!");
       }
     }
-    if (!fullname) {
-      setErrfullname("Full name is required!");
-    } else {
-      if (fullname.length <= 2) {
-        setErrfullname("Full name must contain more than 2 words!");
-      }
-    }
+
     if (!password) {
       setErrpassword("Password is required!");
     } else {
@@ -60,14 +49,23 @@ const Registration = () => {
   const handlePasswordShow = () => {
     setShow(!show);
   };
+  const handleGoogleLogin = () => {
+    alert("Google login will update soon!");
+  };
   return (
     <div className="max-w-screen-lg mx-auto flex">
       <div className="w-full sml:w-2/3 md:w-1/2 flex flex-col justify-center items-start ml-0 px-4 mdl:px-0 mdl:ml-32 font-bodyFont">
         <div className="text-primary w-full mb-8 sml:mb-10 mt-8 sml:mt-4 mdl:mt-0 text-center sml:text-left">
           <h2 className="font-bold text-2xl mdl:text-4xl mb-0 sml:mb-2">
-            Get started with easy register
+            Login to your account!
           </h2>
-          <p className="font-xl">Free register and you can enjoy it</p>
+          <div
+            onClick={handleGoogleLogin}
+            className="flex text-base cursor-pointer rounded-md mt-6 justify-center items-center gap-4 border border-[#03014C] p-4 w-56"
+          >
+            <FcGoogle size={30} />
+            <p className="font-bold">Login with Google</p>
+          </div>
         </div>
         <div className="flex flex-col gap-10 w-full text-primary">
           <div>
@@ -83,19 +81,7 @@ const Registration = () => {
             </div>
             <p className="registrationErrorMsg">{erremail}</p>
           </div>
-          <div>
-            <div className="registrationInputDiv">
-              <p className="registrationInputText">Full name</p>
-              <input
-                className="registrationInput"
-                type="text"
-                placeholder="Enter your full name"
-                onChange={handleFullname}
-                value={fullname}
-              />
-            </div>
-            <p className="registrationErrorMsg">{errfullname}</p>
-          </div>
+
           <div>
             <div className="registrationInputDiv">
               <p className="registrationInputText">Password</p>
@@ -119,13 +105,13 @@ const Registration = () => {
         </div>
         <div className="w-full mdl:w-2/3 flex mb-6 flex-col justify-center items-center mt-8 gap-6">
           <div className="w-full" onClick={handleRegistration}>
-            <RegistrationButton />
+            <LoginButton />
           </div>
           <p className="text-sm text-[#03014C]">
             Already have an account ?
-            <Link to="/login">
+            <Link to="/registration">
               <span className="text-[#EA6C00] ml-1 font-bold hover:text-primary hover:underline transition duration-300">
-                Sign In
+                Sign Up
               </span>
             </Link>
           </p>
@@ -135,8 +121,8 @@ const Registration = () => {
         <picture>
           <img
             className="w-full h-full md:h-screen object-cover "
-            src={registrationImg}
-            alt="registrationImg"
+            src={loginImg}
+            alt="loginImg"
             loading="lazy"
           />
         </picture>
@@ -145,4 +131,4 @@ const Registration = () => {
   );
 };
 
-export default Registration;
+export default Login;
